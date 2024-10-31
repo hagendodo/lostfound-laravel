@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FoundedItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class FoundedItemController extends Controller
@@ -22,17 +23,22 @@ class FoundedItemController extends Controller
 
     public function store(Request $request)
     {
+        try{
+            $request['user_nim'] = Auth::user()->nim;
+
         $request->validate([
             'name' => 'required|string|max:255',
             'photo' => 'required|string|max:2048',
             'found_date' => 'required|date',
             'location_option' => 'nullable|string|max:1024',
-            'location_coordinate' => 'nullable|point',
             'user_nim' => 'required|string|max:20',
         ]);
 
         FoundedItem::create($request->all());
-        return redirect()->route('founded_items.index')->with('success', 'Item created successfully!');
+        return redirect()->route('thanks')->with('success', 'Barang hilang telah dilaporkan!');
+        }catch(\Exception $e){
+            return Redirect::back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function update(Request $request, $id)

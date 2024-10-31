@@ -1,20 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="min-h-screen flex flex-col gap-4 items-center justify-center">
-    <h1 class="text-center text-xl font-bold">LOST FOUND FST</h1>
-    <img class="w-48 h-48" src="https://fst.uinsgd.ac.id/wp-content/uploads/2020/05/cropped-logo-uin.png" alt="LOGO UIN SGD" />
-    <div class="inline-flex flex-col rounded-md shadow-sm w-10/12" role="group">
-        <a href="/search" class="w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-t-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-            Cari barang hilang
-        </a>
-        <a href="/search" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-            Laporkan penemuan barang
-        </a>
-        <a href="/search" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-b-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-            Hubungi admin
-        </a>
-    </div>
-</div>
+    <section class="bg-gray-50">
+        <div class="mx-auto max-w-screen-xl px-4 pb-10 pt-24 lg:flex lg:h-screen lg:items-center">
+            <div class="mx-auto max-w-xl text-center">
+                <h1 class="text-3xl font-extrabold sm:text-5xl">
+                    Barang saya hilang nih.
+                    <strong class="font-extrabold text-teal-700 sm:block"> Harus gimana? </strong>
+                </h1>
 
+                <p class="mt-4 sm:text-xl/relaxed">
+                    Cari aja disini, siapa tau udah ada yang nemuin barang kamu.
+                </p>
+
+                <div class="mt-8 flex flex-wrap justify-center gap-4">
+                    <a class="block w-full rounded bg-teal-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-teal-700 focus:outline-none focus:ring active:bg-teal-500 sm:w-auto"
+                        href="/search">
+                        Cari Barang Saya
+                    </a>
+
+                    <a class="bg-white block w-full rounded px-12 py-3 text-sm font-medium text-teal-600 shadow hover:text-teal-700 focus:outline-none focus:ring active:text-teal-500 sm:w-auto"
+                        href="/report">
+                        Laporkan Penemuan Barang
+                    </a>
+
+                    @if (auth()->user())
+                        <a class="bg-white block w-full rounded px-12 py-3 text-sm font-medium text-teal-600 shadow hover:text-teal-700 focus:outline-none focus:ring active:text-teal-500 sm:w-auto"
+                            href="/riwayat">
+                            Riwayat
+                        </a>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

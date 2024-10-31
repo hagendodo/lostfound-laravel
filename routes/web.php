@@ -109,7 +109,11 @@ Route::middleware([CheckAuth::class])->group(function () {
         return view('services.thanks');
     })->name('thanks');
 
-    Route::get('/claim_found/{id}', function ($id) {
+    Route::get('/please-wait-verification', function () {
+        return view('services.wait');
+    })->name('please-wait-verification');
+
+    Route::post('/claim_found/{id}', function ($id) {
         return view('services.claim', ['foundedItemId' => $id]);
     })->name('claim_found');
 
@@ -130,7 +134,7 @@ Route::middleware([CheckAuth::class])->group(function () {
         }
 
         ClaimHistory::create($validated_request);
-        return redirect()->route('thanks')->with('success', 'Barang telah diajukan untuk klaim!');
+        return redirect()->route('please-wait-verification')->with('success', 'Barang telah diajukan untuk klaim!');
     })->name('verification_claim');
 
     Route::get('/riwayat', function () {

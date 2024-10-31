@@ -48,7 +48,7 @@
 
                             <h3 class="mt-1.5 text-lg font-medium text-gray-900">{{ $item->name }}</h3>
 
-                            <form action="{{ route('claim_found', ['id' => $item->id]) }}" method="GET"
+                            <form action="{{ route('claim_found', ['id' => $item->id]) }}" method="POST"
                                 class="mt-4 flex gap-4">
                                 @csrf
                                 <button type="submit"

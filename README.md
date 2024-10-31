@@ -1,4 +1,4 @@
-# Rumah Jurnal - Project Setup Instructions
+# Lost Found - Project Setup Instructions
 
 Follow the steps below to set up and run the project locally.
 
